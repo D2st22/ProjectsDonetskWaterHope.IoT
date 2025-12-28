@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp1", "top": 125.2, "left": 11, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 57, "left": 116.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "pot1:GND", "esp1:GND.1", "black", [ "v0" ] ],
+    [ "pot1:VCC", "esp1:3V3", "red", [ "v0" ] ],
+    [ "pot1:SIG", "esp1:34", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
