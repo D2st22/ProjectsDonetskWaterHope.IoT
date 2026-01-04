@@ -1,32 +1,32 @@
-#include <Arduino.h> // Обов'язково для PlatformIO
+#include <Arduino.h> 
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-// --- НАЛАШТУВАННЯ ---
+
 const char* WIFI_SSID = "Wokwi-GUEST";
 const char* WIFI_PASSWORD = "";
 
-// 👇 ВСТАВ СЮДИ СВІЙ URL (без слеша в кінці) 👇
+
 const String SERVER_URL = "https://donetskwaterhope.onrender.com"; 
 
 const int DEVICE_ID = 1;
 const String ACCOUNT_NUMBER = "WH-0MWXOUI0";
 const String PASSWORD = "123456789";
 
-// --- ЗМІННІ ---
+
 String jwtToken = "";
 long totalCounter = 0;
 const int POT_PIN = 34; 
 
-// Оголошення функцій (у C++ це бажано робити перед використанням)
+
 bool login();
 void syncLastValue();
 void sendTelemetry(long value);
 void sendAlert(String msg);
 
 void setup() {
-  Serial.begin(115200); // Це вже є
+  Serial.begin(115200); 
   Serial.println("\n\n--- SYSTEM START ---\n\n");
   
   Serial.print("Connecting to WiFi");
@@ -58,7 +58,7 @@ void loop() {
     Serial.printf("Flow: %d L. Total: %ld\n", flowRate, totalCounter);
     
     if (flowRate > 8) {
-       sendAlert("CRITICAL: Pipe burst detected!");
+       sendAlert("Виявлено можливе протікання");
     }
     
     sendTelemetry(totalCounter);
@@ -69,7 +69,7 @@ void loop() {
   delay(5000); 
 }
 
-// --- РЕАЛІЗАЦІЯ ФУНКЦІЙ ---
+
 
 bool login() {
   HTTPClient http;
